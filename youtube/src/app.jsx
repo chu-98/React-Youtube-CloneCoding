@@ -7,3 +7,4 @@ function App() {
 export default App;
 
 // API 키 설정하기
+// Postman 소개와 설정
