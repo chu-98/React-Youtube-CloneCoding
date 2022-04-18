@@ -5,6 +5,23 @@ import VideoList from "./components/video_list/video_list";
 
 function App() {
   const [videos, setVideos] = useState([]);
+  const search = q => {
+    const requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
+
+    fetch(
+      `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${q}&type=video&key=AIzaSyAbecGEB1yQG7jIvGlbWzF6tpME3gHSRZ0`,
+      requestOptions
+    )
+      .then(response => response.json())
+      .then(result =>
+        result.items.map(item => ({ ...item, id: item.id.videoId }))
+      )
+      .then(items => setVideos(items))
+      .catch(error => console.log("error", error));
+  };
 
   useEffect(() => {
     const requestOptions = {
@@ -22,7 +39,7 @@ function App() {
   }, []);
   return (
     <div className={styles.app}>
-      <SearchHeader />
+      <SearchHeader onSearch={search} />
       <VideoList videos={videos} />
     </div>
   );
