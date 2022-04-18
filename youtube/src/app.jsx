@@ -8,13 +8,13 @@ function App({ youtube }) {
   const search = q => {
     youtube
       .search(q) //
-      .then(videos => setVideos(videos));
+      .then(videos => setVideos(vidoes));
   };
 
   useEffect(() => {
     youtube
       .mostPopular() //
-      .then(videos => setVideos(videos));
+      .then(videos => setVideos(vidoes));
   }, []);
 
   return (
