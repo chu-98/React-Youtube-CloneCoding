@@ -1,10 +1,10 @@
 import React from "react";
 import VideoItem from "../video_item/video_item";
 
-const VideoList = props => (
+const VideoList = ({ videos, onVideoClick }) => (
   <ul>
-    {props.videos.map(video => (
-      <VideoItem video={video} key={video.id} />
+    {videos.map(video => (
+      <VideoItem video={video} key={video.id} onVideoClick={onVideoClick} />
     ))}
   </ul>
 );
